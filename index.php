@@ -7,7 +7,7 @@ if(isset($_POST['login'])) {
 	if(empty($_POST['pseudo']) || empty($_POST['password'])) {
 		$message = 'Merci de remplir les champs du formulaire';
 	} else { // Si PSEUDO et PASSWORD sont remplis
-		$sql = "SELECT * FROM membre
+		$sql = "SELECT * FROM admin
 		WHERE pseudo = :pseudo AND password = :password";
 		$req = $cnx->prepare($sql);
 		$req->execute(
@@ -22,7 +22,7 @@ if(isset($_POST['login'])) {
 			$donnee = $req->fetch(PDO::FETCH_ASSOC);
 			$_SESSION['id'] = $donnee['id'];
 			
-			header('location:http://localhost/espaceadmin/dashboard/realisations');
+			header('location:https://crud.eosiaweb.be/dashboard/realisations');
 		} else {
 // Si le couple Pseudo/Password N'est PAS trouvé
 			$message = 'Accès refusé !';
